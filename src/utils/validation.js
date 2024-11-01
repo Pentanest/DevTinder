@@ -19,4 +19,11 @@ const validateSignUpData = (body) => {
   }
 };
 
-module.exports = { validateSignUpData };
+const validateEditProfileData = (body) => {
+  const ALLOWED_EDIT_FIELDS = ["firstName", "lastName", "photoUrl", "gender", "age", "about", "skills"];
+
+  const isEditAllowed = Object.keys(body).every((item) => ALLOWED_EDIT_FIELDS.includes(item));
+  return isEditAllowed;
+};
+
+module.exports = { validateSignUpData, validateEditProfileData };
